@@ -14,7 +14,6 @@ class FilesController {
       const data = [];
 
       for (const file of files) {
-        // TODO: Fetch for each file and format it
         try {
           const fileRes = await axiosClient({
             method: "get",
