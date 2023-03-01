@@ -51,6 +51,7 @@ class FilesController {
           console.log("[ERROR] - File processing error: " + file);
         }
       }
+      res.setHeader("content-type", "application/json");
       res.status(200).send({ data, message: "Ok" });
     } catch (error) {
       console.log("[ERROR] - There was an error on route GET:/files/data");
