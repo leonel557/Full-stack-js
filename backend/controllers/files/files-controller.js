@@ -25,8 +25,13 @@ class FilesController {
 
   async getFilesData(req, res) {
     try {
-      const files = await this.getFiles();
+      let files = [];
       const data = [];
+      if (req.query && req.query?.fileName) {
+        files = [req.query.fileName];
+      } else {
+        files = await this.getFiles();
+      }
 
       for (const file of files) {
         try {
