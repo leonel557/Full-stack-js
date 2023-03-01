@@ -4,13 +4,28 @@ const axiosClient = require("../../axios");
 class FilesController {
   constructor() {}
 
+  async getFiles() {
+    const filesRes = await axiosClient({
+      method: "get",
+      url: "/secret/files",
+    });
+    return filesRes.data.files;
+  }
+
+  async getFilesList(req, res) {
+    try {
+      const files = await this.getFiles();
+
+      res.status(200).send({ data: files, message: "Ok" });
+    } catch (error) {
+      console.log("[ERROR] - There was an error on route GET:/files/list");
+      res.status(500).send({ data: [], message: error });
+    }
+  }
+
   async getFilesData(req, res) {
     try {
-      const filesRes = await axiosClient({
-        method: "get",
-        url: "/secret/files",
-      });
-      const files = filesRes.data.files;
+      const files = await this.getFiles();
       const data = [];
 
       for (const file of files) {
@@ -51,7 +66,7 @@ class FilesController {
           console.log("[ERROR] - File processing error: " + file);
         }
       }
-      res.setHeader("content-type", "application/json");
+
       res.status(200).send({ data, message: "Ok" });
     } catch (error) {
       console.log("[ERROR] - There was an error on route GET:/files/data");

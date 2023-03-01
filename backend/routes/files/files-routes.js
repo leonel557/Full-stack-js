@@ -4,6 +4,13 @@ const router = require('express').Router();
 const FilesController = require('../../controllers/files');
 const filesController = new FilesController();
 
-router.get('/files/data', filesController.getFilesData.bind(filesController));
+const middleware = (req, res, next) => {
+  res.setHeader("content-type", "application/json");
+  next();
+}
+
+router.get('/files/list', middleware, filesController.getFilesList.bind(filesController));
+
+router.get('/files/data', middleware, filesController.getFilesData.bind(filesController));
 
 module.exports = router;
