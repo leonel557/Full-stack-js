@@ -15,6 +15,7 @@ app.use(require("./routes/files"));
 
 // Run server
 const port = process.env.PORT || 4000;
-app.listen(port, () => {
+
+module.exports = app.listen(port, () => {
   console.log(`[SERVER] - Initialized on port ${port}`);
 });
