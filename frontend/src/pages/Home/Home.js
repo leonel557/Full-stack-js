@@ -1,11 +1,14 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useFiles } from "../../hooks/use-files";
 
 import Table from "react-bootstrap/Table";
 import TableContent from "./TableContent";
+import Spinner from "react-bootstrap/Spinner";
 import Container from "react-bootstrap/Container";
 import SelectSection from "../../components/SelectSection";
+
+import { Th, Td, TdCentered, TdError } from "./styles";
 
 const Home = () => {
   const [selectedFile, setSelectedFile] = useState("");
@@ -29,10 +32,10 @@ const Home = () => {
       <Table responsive={true} hover striped size="sm">
         <thead>
           <tr>
-            <th>File name</th>
-            <th>Text</th>
-            <th>Number</th>
-            <th>Hex</th>
+            <th style={Th}>File name</th>
+            <th style={Th}>Text</th>
+            <th style={Th}>Number</th>
+            <th style={Th}>Hex</th>
           </tr>
         </thead>
         <Content data={data} loading={loading} error={error} />
@@ -47,13 +50,17 @@ const Content = ({ data, loading, error }) => {
       {loading ? (
         <tbody>
           <tr>
-            <td colSpan={4}>Loading files</td>
+            <td style={TdCentered} colSpan={4}>
+              <Spinner variant="primary" />
+            </td>
           </tr>
         </tbody>
       ) : error ? (
         <tbody>
           <tr>
-            <td colSpan={4}>There was an error while getting files</td>
+            <td style={Td} colSpan={4}>
+              There was an error while getting files
+            </td>
           </tr>
         </tbody>
       ) : data && data.length ? (
@@ -61,7 +68,9 @@ const Content = ({ data, loading, error }) => {
       ) : (
         <tbody>
           <tr>
-            <td colSpan={4}>Files not found</td>
+            <td style={TdError} colSpan={4}>
+              Files not found
+            </td>
           </tr>
         </tbody>
       )}

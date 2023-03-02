@@ -1,5 +1,7 @@
 import React, { Fragment } from "react";
 
+import { Td } from '../styles'
+
 const TableContent = ({ data }) => {
   return (
     <>
@@ -9,18 +11,18 @@ const TableContent = ({ data }) => {
             <tbody>
               {item.lines.map((line, i2) => (
                 <tr key={i2}>
-                  <td>{item.file}</td>
-                  <td>{line?.text ? line.text : "-"}</td>
-                  <td>{line?.number ? line.number : "-"}</td>
-                  <td>{line?.hex ? line.hex : "-"}</td>
+                  <td style={Td}>{item.file}</td>
+                  <td style={Td}>{line?.text ? line.text : "-"}</td>
+                  <td style={Td}>{line?.number ? line.number : "-"}</td>
+                  <td style={Td}>{line?.hex ? line.hex : "-"}</td>
                 </tr>
               ))}
             </tbody>
           ) : (
             <tbody>
               <tr>
-                <td>{item.file}</td>
-                <td colSpan={3}>No content for this file</td>
+                <td style={Td}>{item.file}</td>
+                <td style={Td} colSpan={3}>No content for this file</td>
               </tr>
             </tbody>
           )}
