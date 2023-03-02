@@ -25,9 +25,23 @@ describe('Files API', () => {
 
   /**
    * Test files data - GET route
+   * Test files data with query param - GET route
    */
-
-  /**
-   * Test files data with query params - GET route
-   */
+  describe('Files data GET', () => {
+    it('Should get a list of files with their formatted lines', (done) => {
+      chai.request(server)
+        .get('/files/data')
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.an('object').that.include({ message: 'Ok' });
+          
+          const data = res.body.data;
+          chai.expect(data).to.be.an('array').to.have.lengthOf.at.least(1);;
+        })
+      done();
+    });
+    it('Should get a file by file name with its formatted lines', (done) => {
+      done();
+    });
+  })
 })
