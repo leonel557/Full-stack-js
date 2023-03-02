@@ -7,7 +7,7 @@ import Spinner from "react-bootstrap/Spinner";
 import Container from "react-bootstrap/Container";
 
 import TableContent from "./TableContent";
-import { Th, Td, TdCentered, TdError } from "./styles";
+import { Thead, Th, Td, TdCentered, TdError } from "./styles";
 import SelectSection from "../../components/SelectSection";
 
 const Home = () => {
@@ -29,8 +29,8 @@ const Home = () => {
         value={selectedFile}
         onChange={setSelectedFile}
       />
-      <Table responsive={true} hover striped size="sm">
-        <thead>
+      <Table responsive={true} hover striped bordered size="sm">
+        <thead style={Thead}>
           <tr>
             <th style={Th}>File name</th>
             <th style={Th}>Text</th>

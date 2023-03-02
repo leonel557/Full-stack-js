@@ -1,3 +1,8 @@
+export const Thead = {
+  color: 'var(--extra-light)',
+  background: 'var(--blue)',
+}
+
 export const Th = {
   fontWeight: 600,
   fontSize: '18px',
