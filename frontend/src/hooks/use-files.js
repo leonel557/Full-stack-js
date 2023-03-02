@@ -4,7 +4,7 @@ import API from '../api';
 
 export const useFiles = () => {
   const [error, setError] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   const [data, setData] = useState([])
   const [fileList, setFileList] = useState([])
@@ -46,5 +46,6 @@ export const useFiles = () => {
     error,
     loading,
     fileList,
+    handleFetchData,
   }
 }

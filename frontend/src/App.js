@@ -9,7 +9,7 @@ import Layout from "./components/Layout";
 
 const App = () => {
   return (
-    <ThemeProvider breakpoints={["xxl", "xl", "lg", "md", "sm"]}>
+    <ThemeProvider breakpoints={["xxl", "xl", "lg", "md", "sm", "xs"]}>
       <BrowserRouter>
         <Layout>
           <Routes>

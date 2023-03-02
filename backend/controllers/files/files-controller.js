@@ -15,6 +15,7 @@ class FilesController {
   async getFilesList(req, res) {
     try {
       const files = await this.getFiles();
+      console.log('/files/list')
 
       res.status(200).send({ data: files, message: "Ok" });
     } catch (error) {
@@ -25,6 +26,7 @@ class FilesController {
 
   async getFilesData(req, res) {
     try {
+      console.log('/files/data')
       let files = [];
       const data = [];
       if (req.query && req.query?.fileName) {

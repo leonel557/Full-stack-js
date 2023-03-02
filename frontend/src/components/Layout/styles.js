@@ -12,7 +12,11 @@ export const Main = {
 
 export const Header = {
   padding: "10px 0px",
-  marginBottom: '20px',
+  margin: '0px 0px 50px 0px',
   background: colors["light-blue"],
   boxShadow: `0 4px 5px -2px ${colors['blue']}`,
 };
+
+export const Section = {
+  margin: '0px 0px 30px 0px',
+}
