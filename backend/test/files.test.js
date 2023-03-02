@@ -29,7 +29,7 @@ describe("Files API", () => {
    * Test files data with query param - GET route
    */
   describe("Files data GET", () => {
-    it("Should get a list of files with their formatted lines", (done) => {
+    it("Should get a list of files", (done) => {
       chai
         .request(server)
         .get("/files/data")
@@ -42,7 +42,7 @@ describe("Files API", () => {
         });
       done();
     });
-    it("Should get a file by file name with its formatted lines", (done) => {
+    it("Should get only one file by file name", (done) => {
       chai
         .request(server)
         .get("/files/data?fileName=test1.csv")
