@@ -36,11 +36,23 @@ describe('Files API', () => {
           res.body.should.be.an('object').that.include({ message: 'Ok' });
           
           const data = res.body.data;
-          chai.expect(data).to.be.an('array').to.have.lengthOf.at.least(1);;
+          chai.expect(data).to.be.an('array').to.have.lengthOf.at.least(1);
         })
       done();
     });
     it('Should get a file by file name with its formatted lines', (done) => {
+      chai.request(server)
+        .get('/files/data?fileName=test1.csv')
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.an('object').that.include({ message: 'Ok' });
+          
+          const data = res.body.data;
+          chai.expect(data).to.be.an('array').to.have.lengthOf(1);
+          
+          const file = data[0]
+          chai.expect(file).to.include({ file: 'test1.csv' })
+        })
       done();
     });
   })
