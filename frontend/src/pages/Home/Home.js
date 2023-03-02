@@ -69,7 +69,7 @@ const Content = ({ data, loading, error }) => {
         <tbody>
           <tr>
             <td style={TdError} colSpan={4}>
-              Files not found
+              File&#40;s&#41; not found
             </td>
           </tr>
         </tbody>

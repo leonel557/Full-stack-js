@@ -15,4 +15,5 @@ export const TdCentered = {
 export const TdError = {
   ...Td,
   color: '#b52845',
+  fontWeight: 600,
 }
