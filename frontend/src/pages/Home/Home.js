@@ -3,12 +3,12 @@ import React, { useState, useEffect } from "react";
 import { useFiles } from "../../hooks/use-files";
 
 import Table from "react-bootstrap/Table";
-import TableContent from "./TableContent";
 import Spinner from "react-bootstrap/Spinner";
 import Container from "react-bootstrap/Container";
-import SelectSection from "../../components/SelectSection";
 
+import TableContent from "./TableContent";
 import { Th, Td, TdCentered, TdError } from "./styles";
+import SelectSection from "../../components/SelectSection";
 
 const Home = () => {
   const [selectedFile, setSelectedFile] = useState("");
