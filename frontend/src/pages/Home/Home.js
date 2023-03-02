@@ -3,6 +3,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import { useFiles } from "../../hooks/use-files";
 
 import Table from "react-bootstrap/Table";
+import TableContent from "./TableContent";
 import Container from "react-bootstrap/Container";
 import SelectSection from "../../components/SelectSection";
 
@@ -34,33 +35,37 @@ const Home = () => {
             <th>Hex</th>
           </tr>
         </thead>
-        {data && data.length
-          ? data.map((item, i1) => (
-              <Fragment key={i1}>
-                {item.lines.length ? (
-                  <tbody>
-                    {item.lines.map((line, i2) => (
-                      <tr key={i2}>
-                        <td>{item.file}</td>
-                        <td>{line?.text ? line.text : "-"}</td>
-                        <td>{line?.number ? line.number : "-"}</td>
-                        <td>{line?.hex ? line.hex : "-"}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                ) : (
-                  <tbody>
-                    <tr>
-                      <td>{item.file}</td>
-                      <td colSpan={3}>No content for this file</td>
-                    </tr>
-                  </tbody>
-                )}
-              </Fragment>
-            ))
-          : null}
+        <Content data={data} loading={loading} error={error} />
       </Table>
     </Container>
+  );
+};
+
+const Content = ({ data, loading, error }) => {
+  return (
+    <>
+      {loading ? (
+        <tbody>
+          <tr>
+            <td colSpan={4}>Loading files</td>
+          </tr>
+        </tbody>
+      ) : error ? (
+        <tbody>
+          <tr>
+            <td colSpan={4}>There was an error while getting files</td>
+          </tr>
+        </tbody>
+      ) : data && data.length ? (
+        <TableContent data={data} />
+      ) : (
+        <tbody>
+          <tr>
+            <td colSpan={4}>Files not found</td>
+          </tr>
+        </tbody>
+      )}
+    </>
   );
 };
 
