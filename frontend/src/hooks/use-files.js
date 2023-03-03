@@ -47,5 +47,6 @@ export const useFiles = () => {
     loading,
     fileList,
     handleFetchData,
+    handleFetchList,
   }
 }
